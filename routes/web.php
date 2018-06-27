@@ -39,6 +39,12 @@ Route::post('/admin/login', ['as'=>'admin.login', 'uses'=>'Admin\UsuarioControll
 //Route::get('/home', 'HomeController@index')->name('home');
 
 //Rota principal
-Route::get('/admin', ['as'=>'admin.principal', function(){
-    return view('admin.principal.index');
-}]);
+Route::group(['middleware'=>'auth'], function(){
+    Route::get('/admin/login/sair',['as'=>'admin.login.sair', 'uses'=>'Admin\UsuarioController@sair']);
+
+    Route::get('/admin', ['as'=>'admin.principal', function(){
+        return view('admin.principal.index');
+    }]);
+
+});
+

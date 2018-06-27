@@ -23,5 +23,11 @@ class UsuarioController extends Controller
          'class'=>'red white-text']);
         return redirect()->route('admin.login');
     }
+
+    public function sair(){
+        Auth::logout();
+
+        return redirect()->route('admin.login');
+    }
     
 }
