@@ -23,6 +23,7 @@ Route::get('/contato',['as'=>'site.contato', function(){
     return view('site.contato');
 }]);
 
+
 Route::get('/imovel/{id}/{titulo?}',['as'=>'site.imovel', function(){
     return view('site.imovel');
 }]);
@@ -46,5 +47,11 @@ Route::group(['middleware'=>'auth'], function(){
         return view('admin.principal.index');
     }]);
 
+    Route::get('/admin/usuarios',['as'=>'admin.usuarios', 'uses'=>'Admin\UsuarioController@index']);
+
+    //Route::get('/admin/usuarios',['as'=>'admin.usuarios', 'uses'=>'Admin\UsuarioController@index']);
+  
+    Route::get('/admin/usuarios/adicionar', ['as'=>'admin.usuarios.adicionar', 'uses'=>'Admin\UsuarioController@adicionar']);
+    Route::post('/admin/usuarios/salvar', ['as'=>'admin.usuarios.salvar', 'uses'=>'Admin\UsuariosController@salvar'] );
 });
 
