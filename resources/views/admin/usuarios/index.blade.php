@@ -5,6 +5,12 @@
 <div class="container">
     <h2 class="center">Lista de Usuarios</h2>
 
+   <div class="row">
+        <a class="btn blue right" href="{{ route('admin.usuarios.adicionar') }}" title="Adicionar Usuário">
+            <i class="material-icons">add</i>
+        </a>
+    </div>
+
     <div class="row">
         <nav>
             <div class="nav-wrapper grey lighten-1">

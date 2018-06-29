@@ -52,6 +52,6 @@ Route::group(['middleware'=>'auth'], function(){
     //Route::get('/admin/usuarios',['as'=>'admin.usuarios', 'uses'=>'Admin\UsuarioController@index']);
   
     Route::get('/admin/usuarios/adicionar', ['as'=>'admin.usuarios.adicionar', 'uses'=>'Admin\UsuarioController@adicionar']);
-    Route::post('/admin/usuarios/salvar', ['as'=>'admin.usuarios.salvar', 'uses'=>'Admin\UsuariosController@salvar'] );
+    Route::post('/admin/usuarios/salvar', ['as'=>'admin.usuarios.salvar', 'uses'=>'Admin\UsuarioController@salvar'] );
 });
 

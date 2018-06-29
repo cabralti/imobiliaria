@@ -46,7 +46,25 @@ class UsuarioController extends Controller
     }
 
     //Route::post()
-    public function salvar(){
+    public function salvar(Request $request){
+        $dados = $request->all();
+
+        /**
+         * Para salvar um usuario preciso:
+         * 1 - Modelo User
+         * 2 - Criar novo usuario
+         * 3 - Setar valores vindos do request
+         * 4 - Salvar no BD através do método save()
+         */
         
+         $usuario = new User();
+         $usuario->name = $dados['name'];
+         $usuario->email = $dados['email'];
+         $usuario->password = bcrypt($dados['password']);
+         $usuario->save();
+
+         \Session::flash('mensagem', ['msg'=>'Usuário adicionado com sucesso!', 'class'=>'green white-text']);
+
+         return redirect()->route('admin.usuarios');
     }
 }
