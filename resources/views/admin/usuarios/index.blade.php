@@ -40,7 +40,7 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
-                        <a class="btn orange" href="#">Editar</a>
+                        <a class="btn orange" href="{{ route('admin.usuario.editar', $user->id) }}">Editar</a>
                         <a class="btn red" href="#">Deletar</a>
                     </td>
                 </tr>
