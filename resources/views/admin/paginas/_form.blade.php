@@ -3,9 +3,9 @@
     <label for="titulo">Título:</label>
 </div>
 <div class="input-field">
-    <input type="text" name="decricao" class="validate"
+    <input type="text" name="descricao" class="validate"
            value="{{ isset($pagina->descricao) ? $pagina->descricao : '' }}">
-    <label for="decricao">Descrição:</label>
+    <label for="descricao">Descrição:</label>
 </div>
 
 @if(isset($pagina->email))

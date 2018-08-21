@@ -22,6 +22,42 @@ class PaginaController extends Controller
 
     public function atualizar(Request $request, $id)
     {
+        $dados = $request->all();
+        $pagina = Pagina::find($id);
 
+        $pagina->titulo = trim($dados['titulo']);
+        $pagina->descricao = trim($dados['descricao']);
+        $pagina->texto = trim($dados['texto']);
+//        $pagina->imagem = trim($dados['imagem']);
+
+        if (isset($dados['email'])) {
+            $pagina->email = trim($dados['email']);
+        }
+
+        if (isset($dados['mapa']) && trim($dados['mapa']) != '') {
+            $pagina->mapa = trim($dados['mapa']);
+        }else{
+            $pagina->mapa = null;
+        }
+
+        //Tratamento para upload de imagem
+        $file = $request->file('imagem');
+        if($file){
+            $rand = rand(11111, 99999);
+            $diretorio = "img/paginas/".$id."/";
+            $extensao = $file->guessClientExtension();
+            $nomeArquivo = "_img_".$rand.".".$extensao;
+
+            //Mover para o diretório
+            $file->move($diretorio, $nomeArquivo);
+
+            $pagina->imagem = $diretorio."/".$nomeArquivo;
+        }
+
+        $pagina->update();
+
+        \Session::flash('mensagem', ['msg' => 'Página editada com sucesso!', 'class' => 'green white-text']);
+
+        return redirect()->route('admin.paginas');
     }
 }
