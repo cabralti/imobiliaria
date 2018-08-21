@@ -25,10 +25,11 @@ Route::get('/sobre', [
 
 Route::get('/contato', [
     'as' => 'site.contato',
-    function () {
-        return view('site.contato');
-    }
+    'uses' => 'Site\PaginaController@contato'
 ]);
+
+// Requisição de envio de e-mail
+Route::post('/contato/enviar', ['as' => 'site.contato.enviar', 'uses' => 'Site\PaginaController@enviarContato']);
 
 
 Route::get('/imovel/{id}/{titulo?}', [
@@ -88,7 +89,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/paginas', ['as' => 'admin.paginas', 'uses' => 'Admin\PaginaController@index']);
 
     /* Editar páginas */
-    Route::get('/admin/paginas/editar/{id}', ['as' => 'admin.paginas.editar', 'uses' => 'Admin\PaginaController@editar']);
+    Route::get('/admin/paginas/editar/{id}',
+        ['as' => 'admin.paginas.editar', 'uses' => 'Admin\PaginaController@editar']);
 
     /* Atualização da páginas pelo formulário */
     Route::put('/admin/paginas/atualizar/{id}',

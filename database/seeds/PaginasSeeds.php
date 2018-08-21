@@ -29,7 +29,27 @@ class PaginasSeeds extends Seeder
 
         $paginaSobre->save();
 
-        echo "Pagina criada com sucesso";
+        echo "Pagina sobre criada com sucesso";
+
+
+        $existe = Pagina::where('tipo', '=', 'contato')->count();
+
+        if ($existe) {
+            $paginaContato = Pagina::where('tipo', '=', 'contato')->first();
+        }else{
+            $paginaContato = new Pagina();
+        }
+
+        $paginaContato->titulo = "Entre em contato";
+        $paginaContato->descricao = "Preencha o formulário";
+        $paginaContato->texto = "Contato";
+        $paginaContato->email = "cabral.9santos@gmail.com";
+        $paginaContato->imagem = "img/modelo_img_home.jpg";
+        $paginaContato->tipo = "contato";
+
+        $paginaContato->save();
+
+        echo "\nPagina contato criada com sucesso";
 
     }
 }
