@@ -20,9 +20,7 @@ Route::get('/', [
 
 Route::get('/sobre', [
     'as' => 'site.sobre',
-    function () {
-        return view('site.sobre');
-    }
+    'uses' => 'Site\PaginaController@sobre'
 ]);
 
 Route::get('/contato', [
@@ -83,6 +81,17 @@ Route::group(['middleware' => 'auth'], function () {
         ['as' => 'admin.usuario.atualizar', 'uses' => 'Admin\UsuarioController@atualizar']);
 
     /* Deletar */
-    Route::get('/admin/usuarios/deletar/{id}', ['as' => 'admin.usuarios.deletar', 'uses' => 'Admin\UsuarioController@deletar'] );
+    Route::get('/admin/usuarios/deletar/{id}',
+        ['as' => 'admin.usuarios.deletar', 'uses' => 'Admin\UsuarioController@deletar']);
+
+    /* Listar páginas*/
+    Route::get('/admin/paginas', ['as' => 'admin.paginas', 'uses' => 'Admin\PaginaController@index']);
+
+    /* Editar páginas */
+    Route::get('/admin/paginas/editar/{id}', ['as' => 'admin.paginas.editar', 'uses' => 'Admin\PaginaController@editar']);
+
+    /* Atualização da páginas pelo formulário */
+    Route::put('/admin/paginas/atualizar/{id}',
+        ['as' => 'admin.paginas.atualizar', 'uses' => 'Admin\PaginaController@atualizar']);
 });
 
