@@ -95,5 +95,26 @@ Route::group(['middleware' => 'auth'], function () {
     /* Atualização da páginas pelo formulário */
     Route::put('/admin/paginas/atualizar/{id}',
         ['as' => 'admin.paginas.atualizar', 'uses' => 'Admin\PaginaController@atualizar']);
+
+
+    /* Lista de Tipos */
+    Route::get('/admin/tipos', ['as' => 'admin.tipos', 'uses' => 'Admin\TipoController@index']);
+
+    /* Adicionar Tipos */
+    Route::get('/admin/tipos/adicionar',
+        ['as' => 'admin.tipos.adicionar', 'uses' => 'Admin\TipoController@adicionar']);
+    Route::post('/admin/tipos/salvar',
+        ['as' => 'admin.tipos.salvar', 'uses' => 'Admin\TipoController@salvar']);
+
+    /* Editar Tipos */
+    Route::get('/admin/tipos/editar/{id}',
+        ['as' => 'admin.tipos.editar', 'uses' => 'Admin\TipoController@editar']);
+    Route::put('/admin/tipos/atualizar/{id}',
+        ['as' => 'admin.tipos.atualizar', 'uses' => 'Admin\TipoController@atualizar']);
+
+    /* Deletar Tipos */
+    Route::get('/admin/tipos/deletar/{id}',
+        ['as' => 'admin.tipos.deletar', 'uses' => 'Admin\TipoController@deletar']);
+
 });
 
