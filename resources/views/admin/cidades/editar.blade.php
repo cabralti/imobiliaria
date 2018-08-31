@@ -3,27 +3,29 @@
 @section('content')
 
 <div class="container">
-    <h2 class="center">Adicionar</h2>
+    <h2 class="center">Editar Cidade</h2>
 
     <div class="row">
         <nav>
             <div class="nav-wrapper grey lighten-1">
                 <div class="col s12">
                     <a href="{{ route('admin.principal') }}" class="breadcrumb">Início</a>
-                    <a href="{{ route('admin.tipos') }}" class="breadcrumb">Lista de Tipos</a>
-                    <a href="#" class="breadcrumb">Adicionar Tipos</a>
+                    <a href="{{ route('admin.cidades') }}" class="breadcrumb">Lista de Cidades</a>
+                    <a href="#" class="breadcrumb">Editar Tipo</a>
                 </div>
             </div>
         </nav>
     </div>
     
     <div class="row">
-        <form action="{{ route('admin.tipos.salvar') }}" method="post">
+        <form action="{{ route('admin.cidades.atualizar', $registro->id) }}" method="post">
             {{ csrf_field() }}
 
-            @include('admin.tipos._form')
+            <input type="hidden" name="_method" value="put"/>
 
-            <button class="btn blue">Adicionar</button>
+            @include('admin.cidades._form')
+
+            <button class="btn blue">Atualizar</button>
         </form>
     </div>
 

@@ -21,7 +21,7 @@
 <div id="app">
     <header>
         @include('layouts.site._nav')
-    </hedaer>
+    </header>
             
     <main>
 
