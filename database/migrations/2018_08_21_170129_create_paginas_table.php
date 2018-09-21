@@ -19,7 +19,7 @@ class CreatePaginasTable extends Migration
             $table->string('descricao');
             $table->string('texto');
             $table->string('imagem')->nullable();
-            $table->string('mapa')->nullable();
+            $table->string('mapa', 400)->nullable();
             $table->string('email')->nullable();
             $table->string('tipo');
 
