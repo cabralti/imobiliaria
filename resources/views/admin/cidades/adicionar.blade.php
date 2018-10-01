@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <h2 class="center">Adicionar</h2>
+    <h2 class="center">Adicionar Cidades</h2>
 
     <div class="row">
         <nav>
