@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Tipo;
+use App\Imovel;
 
 class TipoController extends Controller
 {
@@ -71,6 +72,24 @@ class TipoController extends Controller
      * */
     public function deletar($id)
     {
+        //Verficando se possui imoveis relacionados ao tipo
+        if (Imovel::where('tipo_id', '=', $id)->count()) {
+
+            $msg = "Não é possível deletar esse Tipo!
+            Esses imóveis ( ";
+
+            $imoveis = Imovel::where('tipo_id', '=', $id)->get();
+            foreach ($imoveis as $imovel) {
+                $msg .= " id: " . $imovel->id . " ";
+            }
+
+            $msg .= ") estão relacionados.";
+
+            \Session::flash('mensagem', ['msg' => $msg, 'class' => 'red white-text']);
+            return redirect()->route('admin.tipos');
+        }
+
+
         Tipo::find($id)->delete();
         \Session::flash('mensagem', ['msg' => 'Registro deletado com sucesso!', 'class' => 'green white-text']);
 

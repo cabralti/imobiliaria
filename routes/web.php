@@ -64,76 +64,110 @@ Route::group(['middleware' => 'auth'], function () {
         }
     ]);
 
-    /* Lista de Usuários */
+    /**
+     * Usuários
+     */
+    //Lista de Usuários
     Route::get('/admin/usuarios', ['as' => 'admin.usuarios', 'uses' => 'Admin\UsuarioController@index']);
 
     //Route::get('/admin/usuarios',['as'=>'admin.usuarios', 'uses'=>'Admin\UsuarioController@index']);
 
-    /* Adicionar */
+    //Adicionar
     Route::get('/admin/usuarios/adicionar',
         ['as' => 'admin.usuarios.adicionar', 'uses' => 'Admin\UsuarioController@adicionar']);
     Route::post('/admin/usuarios/salvar',
         ['as' => 'admin.usuarios.salvar', 'uses' => 'Admin\UsuarioController@salvar']);
 
-    /* Editar */
+    //Editar
     Route::get('/admin/usuarios/editar/{id}',
         ['as' => 'admin.usuario.editar', 'uses' => 'Admin\UsuarioController@editar']);
     Route::put('/admin/usuarios/atualizar/{id}',
         ['as' => 'admin.usuario.atualizar', 'uses' => 'Admin\UsuarioController@atualizar']);
 
-    /* Deletar */
+    //Deletar
     Route::get('/admin/usuarios/deletar/{id}',
         ['as' => 'admin.usuarios.deletar', 'uses' => 'Admin\UsuarioController@deletar']);
 
-    /* Listar páginas*/
+    /**
+     * Páginas
+     */
+    //Listar páginas
     Route::get('/admin/paginas', ['as' => 'admin.paginas', 'uses' => 'Admin\PaginaController@index']);
 
-    /* Editar páginas */
+    //Editar páginas
     Route::get('/admin/paginas/editar/{id}',
         ['as' => 'admin.paginas.editar', 'uses' => 'Admin\PaginaController@editar']);
 
-    /* Atualização da páginas pelo formulário */
+    //Atualização da páginas pelo formulário
     Route::put('/admin/paginas/atualizar/{id}',
         ['as' => 'admin.paginas.atualizar', 'uses' => 'Admin\PaginaController@atualizar']);
 
 
-    /* Lista de Tipos */
+    /**
+     * Tipos
+     */
+    //Lista de Tipos
     Route::get('/admin/tipos', ['as' => 'admin.tipos', 'uses' => 'Admin\TipoController@index']);
 
-    /* Adicionar Tipos */
+    //Adicionar Tipos
     Route::get('/admin/tipos/adicionar',
         ['as' => 'admin.tipos.adicionar', 'uses' => 'Admin\TipoController@adicionar']);
     Route::post('/admin/tipos/salvar',
         ['as' => 'admin.tipos.salvar', 'uses' => 'Admin\TipoController@salvar']);
 
-    /* Editar Tipos */
+    //Editar Tipos
     Route::get('/admin/tipos/editar/{id}',
         ['as' => 'admin.tipos.editar', 'uses' => 'Admin\TipoController@editar']);
     Route::put('/admin/tipos/atualizar/{id}',
         ['as' => 'admin.tipos.atualizar', 'uses' => 'Admin\TipoController@atualizar']);
 
-    /* Deletar Tipos */
+    //Deletar Tipos
     Route::get('/admin/tipos/deletar/{id}',
         ['as' => 'admin.tipos.deletar', 'uses' => 'Admin\TipoController@deletar']);
 
-    /* Lista de Cidade */
+    /**
+     * Cidades
+     */
+    //Lista de Cidade
     Route::get('/admin/cidades', ['as'=>'admin.cidades', 'uses' => 'Admin\CidadeController@index']);
 
-    /* Adicionar Cidades */
+    //Adicionar Cidades
     Route::get('/admin/cidades/adicionar',
         ['as' => 'admin.cidades.adicionar', 'uses' => 'Admin\CidadeController@adicionar']);
     Route::post('/admin/cidades/salvar',
         ['as' => 'admin.cidades.salvar', 'uses' => 'Admin\CidadeController@salvar']);
 
-    /* Editar Cidades */
+    //Editar Cidades
     Route::get('/admin/cidades/editar/{id}',
         ['as' => 'admin.cidades.editar', 'uses' => 'Admin\CidadeController@editar']);
     Route::put('/admin/cidades/atualizar/{id}',
         ['as' => 'admin.cidades.atualizar', 'uses' => 'Admin\CidadeController@atualizar']);
 
-    /* Deletar Cidades */
+    //Deletar Cidades
     Route::get('/admin/cidades/deletar/{id}',
         ['as' => 'admin.cidades.deletar', 'uses' => 'Admin\CidadeController@deletar']);
+
+    /**
+     * Imóveis
+     */
+    //Lista de Imóveis
+    Route::get('/admin/imoveis', ['as'=>'admin.imoveis', 'uses' => 'Admin\ImovelController@index']);
+
+    //Adicionar Imóveis
+    Route::get('/admin/imoveis/adicionar',
+        ['as' => 'admin.imoveis.adicionar', 'uses' => 'Admin\ImovelController@adicionar']);
+    Route::post('/admin/imoveis/salvar',
+        ['as' => 'admin.imoveis.salvar', 'uses' => 'Admin\ImovelController@salvar']);
+
+    //Editar Imóveis
+    Route::get('/admin/imoveis/editar/{id}',
+        ['as' => 'admin.imoveis.editar', 'uses' => 'Admin\ImovelController@editar']);
+    Route::put('/admin/imoveis/atualizar/{id}',
+        ['as' => 'admin.imoveis.atualizar', 'uses' => 'Admin\ImovelController@atualizar']);
+
+    //Deletar Imóveis
+    Route::get('/admin/imoveis/deletar/{id}',
+        ['as' => 'admin.imoveis.deletar', 'uses' => 'Admin\ImovelController@deletar']);
 
 });
 
