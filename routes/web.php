@@ -169,5 +169,27 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/imoveis/deletar/{id}',
         ['as' => 'admin.imoveis.deletar', 'uses' => 'Admin\ImovelController@deletar']);
 
+    /**
+     * Galeria
+     */
+    //Lista de Imóveis
+    Route::get('/admin/galerias/{id}', ['as'=>'admin.galerias', 'uses' => 'Admin\GaleriaController@index']);
+
+    //Adicionar Imóveis
+    Route::get('/admin/galerias/adicionar/{id}',
+        ['as' => 'admin.galerias.adicionar', 'uses' => 'Admin\GaleriaController@adicionar']);
+    Route::post('/admin/galerias/salvar/{id}',
+        ['as' => 'admin.galerias.salvar', 'uses' => 'Admin\GaleriaController@salvar']);
+
+    //Editar Imóveis
+    Route::get('/admin/galerias/editar/{id}',
+        ['as' => 'admin.galerias.editar', 'uses' => 'Admin\GaleriaController@editar']);
+    Route::put('/admin/galerias/atualizar/{id}',
+        ['as' => 'admin.galerias.atualizar', 'uses' => 'Admin\GaleriaController@atualizar']);
+
+    //Deletar Imóveis
+    Route::get('/admin/galerias/deletar/{id}',
+        ['as' => 'admin.galerias.deletar', 'uses' => 'Admin\GaleriaController@deletar']);
+
 });
 
