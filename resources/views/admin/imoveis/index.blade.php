@@ -49,6 +49,7 @@
                         <td>{{ $registro->publicar }}</td>
                         <td>
                             <a class="btn orange" href="{{ route('admin.imoveis.editar', $registro->id) }}">Editar</a>
+                            <a class="btn blue" href="{{ route('admin.galerias', $registro->id) }}">Galeria</a>
                             <a class="btn red" href="javascript: if(confirm('Deletar esse registro?')){
                                 window.location.href = '{{ route('admin.imoveis.deletar', $registro->id) }}'
                             }">Deletar</a>
