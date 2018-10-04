@@ -5,132 +5,29 @@
     @include('layouts.site._filtros')
 </div>
 <div class="row section">
-    <div class="col s12 m3">
-        <div class="card">
-            <div class="card-image">
-                <a href="#"><img src="{{asset('img/modelo_img_home.jpg')}}" alt="Imagem"></a>
-            </div>
-            <div class="card-content">
-                <p><b class="deep-orange-text darken-1">VENDE</b></p>
-                <p><b>Título do Imóvel</b></p>
-                <p>Descrição do imóvel</p>
-                <p>R$ 200.000,00</p>
-            </div>
-            <div class="card-action">
-                <a href="">Ver mais...</a>
-            </div>
-        </div>
-    </div>
-    <div class="col s12 m3">
-        <div class="card">
-            <div class="card-image">
-                <a href="#"><img src="{{asset('img/modelo_img_home.jpg')}}" alt="Imagem"></a>
-            </div>
-            <div class="card-content">
-                <p><b class="deep-orange-text darken-1">VENDE</b></p>
-                <p><b>Título do Imóvel</b></p>
-                <p>Descrição do imóvel</p>
-                <p>R$ 200.000,00</p>
-            </div>
-            <div class="card-action">
-                <a href="">Ver mais...</a>
+    @foreach($imoveis as $imovel)
+        <div class="col s12 m3">
+            <div class="card">
+                <div class="card-image">
+                    <a href="{{route('site.imovel', [$imovel->id, str_slug($imovel->titulo, '_')] )}}"><img
+                                src="{{asset($imovel->imagem)}}" alt="{{ $imovel->titulo }}"></a>
+                </div>
+                <div class="card-content">
+                    <p><b class="deep-orange-text darken-1">{{ $imovel->status }}</b></p>
+                    <p><b>{{ $imovel->titulo }}</b></p>
+                    <p>{{ $imovel->descricao }}</p>
+                    <p>R$ {{ number_format($imovel->valor, '2', ',', '.')}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="{{route('site.imovel', [$imovel->id, str_slug($imovel->titulo, '_')] )}}">Ver mais...</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col s12 m3">
-        <div class="card">
-            <div class="card-image">
-                <a href="#"><img src="{{asset('img/modelo_img_home.jpg')}}" alt="Imagem"></a>
-            </div>
-            <div class="card-content">
-                <p><b class="deep-orange-text darken-1">VENDE</b></p>
-                <p><b>Título do Imóvel</b></p>
-                <p>Descrição do imóvel</p>
-                <p>R$ 200.000,00</p>
-            </div>
-            <div class="card-action">
-                <a href="">Ver mais...</a>
-            </div>
-        </div>
-    </div>
-    <div class="col s12 m3">
-        <div class="card">
-            <div class="card-image">
-                <a href="#"><img src="{{asset('img/modelo_img_home.jpg')}}" alt="Imagem"></a>
-            </div>
-            <div class="card-content">
-                <p><b class="deep-orange-text darken-1">VENDE</b></p>
-                <p><b>Título do Imóvel</b></p>
-                <p>Descrição do imóvel</p>
-                <p>R$ 200.000,00</p>
-            </div>
-            <div class="card-action">
-                <a href="">Ver mais...</a>
-            </div>
-        </div>
-    </div>
-    <div class="col s12 m3">
-        <div class="card">
-            <div class="card-image">
-                <a href="#"><img src="{{asset('img/modelo_img_home.jpg')}}" alt="Imagem"></a>
-            </div>
-            <div class="card-content">
-                <p><b class="deep-orange-text darken-1">VENDE</b></p>
-                <p><b>Título do Imóvel</b></p>
-                <p>Descrição do imóvel</p>
-                <p>R$ 200.000,00</p>
-            </div>
-            <div class="card-action">
-                <a href="">Ver mais...</a>
-            </div>
-        </div>
-    </div>
-    <div class="col s12 m3">
-        <div class="card">
-            <div class="card-image">
-                <a href="#"><img src="{{asset('img/modelo_img_home.jpg')}}" alt="Imagem"></a>
-            </div>
-            <div class="card-content">
-                <p><b class="deep-orange-text darken-1">VENDE</b></p>
-                <p><b>Título do Imóvel</b></p>
-                <p>Descrição do imóvel</p>
-                <p>R$ 200.000,00</p>
-            </div>
-            <div class="card-action">
-                <a href="">Ver mais...</a>
-            </div>
-        </div>
-    </div>
-    <div class="col s12 m3">
-        <div class="card">
-            <div class="card-image">
-                <a href="#"><img src="{{asset('img/modelo_img_home.jpg')}}" alt="Imagem"></a>
-            </div>
-            <div class="card-content">
-                <p><b class="deep-orange-text darken-1">VENDE</b></p>
-                <p><b>Título do Imóvel</b></p>
-                <p>Descrição do imóvel</p>
-                <p>R$ 200.000,00</p>
-            </div>
-            <div class="card-action">
-                <a href="">Ver mais...</a>
-            </div>
-        </div>
-    </div>
-    <div class="col s12 m3">
-        <div class="card">
-            <div class="card-image">
-                <a href="#"><img src="{{asset('img/modelo_img_home.jpg')}}" alt="Imagem"></a>
-            </div>
-            <div class="card-content">
-                <p><b class="deep-orange-text darken-1">VENDE</b></p>
-                <p><b>Título do Imóvel</b></p>
-                <p>Descrição do imóvel</p>
-                <p>R$ 200.000,00</p>
-            </div>
-            <div class="card-action">
-                <a href="">Ver mais...</a>
-            </div>
-        </div>
-    </div>
+    @endforeach
+
+</div>
+
+
+<div class="row text-center">
+    {{$imoveis->links()}}
 </div>

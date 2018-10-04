@@ -13,9 +13,7 @@
 
 Route::get('/', [
     'as' => 'site.home',
-    function () {
-        return view('site.home');
-    }
+    'uses' => 'Site\HomeController@index'
 ]);
 
 Route::get('/sobre', [
@@ -34,9 +32,7 @@ Route::post('/contato/enviar', ['as' => 'site.contato.enviar', 'uses' => 'Site\P
 
 Route::get('/imovel/{id}/{titulo?}', [
     'as' => 'site.imovel',
-    function () {
-        return view('site.imovel');
-    }
+    'uses' => 'Site\ImovelController@index'
 ]);
 
 //Auth::routes();
@@ -129,7 +125,7 @@ Route::group(['middleware' => 'auth'], function () {
      * Cidades
      */
     //Lista de Cidade
-    Route::get('/admin/cidades', ['as'=>'admin.cidades', 'uses' => 'Admin\CidadeController@index']);
+    Route::get('/admin/cidades', ['as' => 'admin.cidades', 'uses' => 'Admin\CidadeController@index']);
 
     //Adicionar Cidades
     Route::get('/admin/cidades/adicionar',
@@ -151,7 +147,7 @@ Route::group(['middleware' => 'auth'], function () {
      * Imóveis
      */
     //Lista de Imóveis
-    Route::get('/admin/imoveis', ['as'=>'admin.imoveis', 'uses' => 'Admin\ImovelController@index']);
+    Route::get('/admin/imoveis', ['as' => 'admin.imoveis', 'uses' => 'Admin\ImovelController@index']);
 
     //Adicionar Imóveis
     Route::get('/admin/imoveis/adicionar',
@@ -173,7 +169,7 @@ Route::group(['middleware' => 'auth'], function () {
      * Galeria
      */
     //Lista de Imóveis
-    Route::get('/admin/galerias/{id}', ['as'=>'admin.galerias', 'uses' => 'Admin\GaleriaController@index']);
+    Route::get('/admin/galerias/{id}', ['as' => 'admin.galerias', 'uses' => 'Admin\GaleriaController@index']);
 
     //Adicionar Imóveis
     Route::get('/admin/galerias/adicionar/{id}',
