@@ -168,24 +168,47 @@ Route::group(['middleware' => 'auth'], function () {
     /**
      * Galeria
      */
-    //Lista de Imóveis
+    //Lista de Galeria
     Route::get('/admin/galerias/{id}', ['as' => 'admin.galerias', 'uses' => 'Admin\GaleriaController@index']);
 
-    //Adicionar Imóveis
+    //Adicionar Galeria
     Route::get('/admin/galerias/adicionar/{id}',
         ['as' => 'admin.galerias.adicionar', 'uses' => 'Admin\GaleriaController@adicionar']);
     Route::post('/admin/galerias/salvar/{id}',
         ['as' => 'admin.galerias.salvar', 'uses' => 'Admin\GaleriaController@salvar']);
 
-    //Editar Imóveis
+    //Editar Galeria
     Route::get('/admin/galerias/editar/{id}',
         ['as' => 'admin.galerias.editar', 'uses' => 'Admin\GaleriaController@editar']);
     Route::put('/admin/galerias/atualizar/{id}',
         ['as' => 'admin.galerias.atualizar', 'uses' => 'Admin\GaleriaController@atualizar']);
 
-    //Deletar Imóveis
+    //Deletar Galeria
     Route::get('/admin/galerias/deletar/{id}',
         ['as' => 'admin.galerias.deletar', 'uses' => 'Admin\GaleriaController@deletar']);
+
+
+    /**
+     * Slides
+     */
+    //Lista de Slide
+    Route::get('/admin/slides', ['as' => 'admin.slides', 'uses' => 'Admin\SlideController@index']);
+
+    //Adicionar Slide
+    Route::get('/admin/slides/adicionar',
+        ['as' => 'admin.slides.adicionar', 'uses' => 'Admin\SlideController@adicionar']);
+    Route::post('/admin/slides/salvar',
+        ['as' => 'admin.slides.salvar', 'uses' => 'Admin\SlideController@salvar']);
+
+    //Editar Slide
+    Route::get('/admin/slides/editar/{id}',
+        ['as' => 'admin.slides.editar', 'uses' => 'Admin\SlideController@editar']);
+    Route::put('/admin/slides/atualizar/{id}',
+        ['as' => 'admin.slides.atualizar', 'uses' => 'Admin\SlideController@atualizar']);
+
+    //Deletar Slide
+    Route::get('/admin/slides/deletar/{id}',
+        ['as' => 'admin.slides.deletar', 'uses' => 'Admin\SlideController@deletar']);
 
 });
 
