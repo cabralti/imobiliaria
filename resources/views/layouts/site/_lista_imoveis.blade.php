@@ -27,7 +27,8 @@
 
 </div>
 
-
-<div class="row text-center">
-    {{$imoveis->links()}}
-</div>
+@if($paginacao)
+    <div class="row text-center">
+        {{$imoveis->links()}}
+    </div>
+@endif
