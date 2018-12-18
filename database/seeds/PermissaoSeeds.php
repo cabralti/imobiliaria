@@ -68,5 +68,62 @@ class PermissaoSeeds extends Seeder
             ]);
         }
 
+        // Papel
+        if (!Permissao::where('nome', '=', 'papel_listar')->count()) {
+            Permissao::create([
+                'nome' => 'papel_listar',
+                'descricao' => 'Listar Pápeis'
+            ]);
+        } else {
+            /** @var Permissao $permissao */
+            $permissao = Permissao::where('nome', '=', 'papel_listar')->first();
+            $permissao->update([
+                'nome' => 'papel_listar',
+                'descricao' => 'Listar Pápeis'
+            ]);
+        }
+
+        if (!Permissao::where('nome', '=', 'papel_adicionar')->count()) {
+            Permissao::create([
+                'nome' => 'papel_adicionar',
+                'descricao' => 'Adicionar Pápeis'
+            ]);
+        } else {
+            /** @var Permissao $permissao */
+            $permissao = Permissao::where('nome', '=', 'papel_adicionar')->first();
+            $permissao->update([
+                'nome' => 'papel_adicionar',
+                'descricao' => 'Adicionar Pápeis'
+            ]);
+        }
+
+        if (!Permissao::where('nome', '=', 'papel_editar')->count()) {
+            Permissao::create([
+                'nome' => 'papel_editar',
+                'descricao' => 'Editar Pápeis'
+            ]);
+        } else {
+            /** @var Permissao $permissao */
+            $permissao = Permissao::where('nome', '=', 'papel_editar')->first();
+            $permissao->update([
+                'nome' => 'papel_editar',
+                'descricao' => 'Editar Pápeis'
+            ]);
+        }
+
+        if (!Permissao::where('nome', '=', 'papel_deletar')->count()) {
+            Permissao::create([
+                'nome' => 'papel_deletar',
+                'descricao' => 'Deletar Pápeis'
+            ]);
+        } else {
+            /** @var Permissao $permissao */
+            $permissao = Permissao::where('nome', '=', 'papel_deletar')->first();
+            $permissao->update([
+                'nome' => 'papel_deletar',
+                'descricao' => 'Deletar Pápeis'
+            ]);
+        }
+
     }
 }

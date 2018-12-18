@@ -77,4 +77,18 @@ class User extends Authenticatable
             Papel::where('nome', '=', $papel->nome)->firstOrFail()
         );
     }
+
+    public function existePapel($papel)
+    {
+        if(is_string($papel)){
+            return $this->papeis->contains('nome', $papel);
+        }
+
+        return $papel->intersect($this->papeis)->count();
+    }
+
+    public function existeAdmin()
+    {
+        return $this->existePapel('admin');
+    }
 }
