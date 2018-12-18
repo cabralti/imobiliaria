@@ -35,4 +35,46 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Papel::class);
     }
+
+    /**
+     * Adiciona relação entre papel e usuário
+     *
+     * @param $papel
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function adicionarPapel($papel)
+    {
+        // Verifica se é uma string
+        if (is_string($papel)) {
+            return $this->papeis()->save(
+                Papel::where('nome', '=', $papel)->firstOrFail()
+            );
+        }
+
+        // Se for objeto, retorna direto
+        return $this->papeis()->save(
+            Papel::where('nome', '=', $papel->nome)->firstOrFail()
+        );
+    }
+
+    /**
+     * Remove relação entre papel e usuário
+     *
+     * @param $papel
+     * @return int
+     */
+    public function removerPapel($papel)
+    {
+        // Verifica se é uma string
+        if (is_string($papel)) {
+            return $this->papeis()->detach(
+                Papel::where('nome', '=', $papel)->firstOrFail()
+            );
+        }
+
+        // Se for objeto, retorna direto
+        return $this->papeis()->detach(
+            Papel::where('nome', '=', $papel->nome)->firstOrFail()
+        );
+    }
 }

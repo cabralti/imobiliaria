@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 //use Illuminate\Auth\AuthenticationException;
+use App\Papel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth; //Utilizar o sistema de autenticação do Laravel
@@ -111,5 +112,49 @@ class UsuarioController extends Controller
         \Session::flash('mensagem', ['msg' => 'Usuário deletado com sucesso!', 'class' => 'green white-text']);
 
         return redirect()->route('admin.usuarios');
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function papel($id)
+    {
+        $usuario = User::find($id);
+        $papel = Papel::all();
+
+        return view('admin.usuarios.papel', compact('usuario', 'papel'));
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function salvarPapel(Request $request, $id)
+    {
+        $usuario = User::find($id);
+        $dados = $request->all();
+        $papel = Papel::find($dados['papel_id']);
+
+        $usuario->adicionarPapel($papel);
+
+        return redirect()->back();
+    }
+
+    /**
+     * @param $id
+     * @param $papel_id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function removerPapel($id, $papel_id)
+    {
+        /** @var User $usuario */
+        $usuario = User::find($id);
+        $papel = Papel::find($papel_id);
+
+        $usuario->removerPapel($papel);
+
+        return redirect()->back();
     }
 }

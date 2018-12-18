@@ -90,6 +90,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/usuarios/deletar/{id}',
         ['as' => 'admin.usuarios.deletar', 'uses' => 'Admin\UsuarioController@deletar']);
 
+
+    //Papel
+    Route::get('/admin/usuarios/papel/{id}',
+        ['as' => 'admin.usuarios.papel', 'uses' => 'Admin\UsuarioController@papel']);
+
+    Route::post('/admin/usuarios/papel/salvar/{id}',
+        ['as' => 'admin.usuarios.papel.salvar', 'uses' => 'Admin\UsuarioController@salvarPapel']);
+
+    Route::get('/admin/usuarios/papel/remover/{id}/{papel_id}',
+        ['as' => 'admin.usuarios.papel.remover', 'uses' => 'Admin\UsuarioController@removerPapel']);
+
     /**
      * Páginas
      */
