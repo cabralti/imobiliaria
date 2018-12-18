@@ -30,6 +30,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    // Papel <-> User
     public function papeis()
     {
         return $this->belongsToMany(Papel::class);
