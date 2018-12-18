@@ -256,9 +256,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/papel/permissao/{id}',
         ['as' => 'admin.papel.permissao', 'uses' => 'Admin\PapelController@permissao']);
 
-    Route::post('/admin/papel/permissao/{id}/salvar',
+    Route::post('/admin/papel/permissao/salvar/{id}',
         ['as' => 'admin.papel.permissao.salvar', 'uses' => 'Admin\PapelController@salvarPermissao']);
-    Route::get('/admin/papel/permissao/{id}/remover/{id_permissao}',
+
+    Route::get('/admin/papel/permissao/remover/{id}/{id_permissao}',
         ['as' => 'admin.papel.permissao.remover', 'uses' => 'Admin\PapelController@removerPermissao']);
 });
 
